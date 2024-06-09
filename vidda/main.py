@@ -8,6 +8,7 @@ from package_input.ordenamiento import menu_ordenar_empleados
 pacientes = []
 
 def menu_empleados(diccionario:dict):
+
     try:
         bandera_Seguir = True
         pacientes_alta = False
@@ -23,7 +24,6 @@ def menu_empleados(diccionario:dict):
             match opcion:
                 case 1:
                     mensaje = agregar_paciente(diccionario)
-                    print(mensaje)
                     pacientes_alta = True
 
                 case 2:
@@ -35,7 +35,7 @@ def menu_empleados(diccionario:dict):
 
                     dni_paciente = buscar_paciente(diccionario, "eliminar","dni")
                     empleado_eliminado = eliminar_paciente("dni",dni_paciente, diccionario)
-                    print(empleado_eliminado)
+                    
 
                 case 4:
                     tabla_empleados = mostrar_pacientes(diccionario)

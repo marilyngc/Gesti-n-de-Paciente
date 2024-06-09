@@ -1,4 +1,4 @@
-from pacientes import opciones
+from .pacientes import opciones
 
 def sacar_promedio(clave:str,diccionario:dict):
     suma = 0

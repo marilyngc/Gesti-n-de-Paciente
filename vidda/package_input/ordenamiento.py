@@ -1,5 +1,5 @@
-from reportes import mostrar_pacientes
-from pacientes import opciones
+from .reportes import mostrar_pacientes
+from .pacientes import opciones
 
 def ordenar_ascendiente(diccionario:dict,clave:str):
     for i in range(len(diccionario)):
@@ -17,6 +17,15 @@ def ordenar_descendiente(diccionario:dict,clave:str):
     return diccionario            
            
 def menu_ordenar_empleados(diccionario:dict):
+    """ Menu que salicita la clave para ordenar de forma descendiente o ascendiente
+
+    Args:
+        diccionario (dict): recibe el diccionario de todos los empleados
+        
+    Examples:
+        # Ejemplo de uso:
+        menu_ordenar_empleados(diccionario_empleados)
+    """
     bandera_seguir = True
     
     while bandera_seguir:

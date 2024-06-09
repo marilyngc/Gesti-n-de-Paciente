@@ -48,13 +48,26 @@ def agregar_paciente(empleados):
         
         empleados.append(empleado_creado)
         contador_id += 1
-        return "Paciente dado de alta con exito"
+        return print("Paciente dado de alta con exito")
     else:
-        return "ERROR: no se puede agregar mas de 20 pacientes"   
+        return print("ERROR: no se puede agregar mas de 20 pacientes" )  
     
     
             
 def menu_modificar_paciente(id_paciente):
+    """Menu para modificar los datos de un paciente.
+
+    Este menú permite al usuario modificar los datos de un paciente específico,
+    como el nombre, apellido, edad, altura, peso, DNI y grupo sanguíneo.
+
+    Args:
+        id_paciente (dict): Diccionario que representa al paciente que se va a modificar.
+
+    Example:
+        # Ejemplo de uso:
+        paciente = {"nombre": "Juan", "apellido": "Pérez", "edad": 30, "altura": 175, "peso": 70, "dni": "12345678", "grupo sanguineo": "A+"}
+        menu_modificar_paciente(paciente)
+    """
     bandera_seguir = True
     
     while bandera_seguir:
@@ -105,10 +118,28 @@ def menu_modificar_paciente(id_paciente):
                 print("ERROR: elija una opcion")
                 
 def eliminar_paciente(clave:str, valor:int,diccionario:dict):
+    """Elimina un paciente del diccionario según una clave y un valor especificados.
+
+    Esta función busca un paciente en el diccionario que coincida con el valor proporcionado
+    para la clave especificada y lo elimina del diccionario.
+
+    Args:
+        clave (str): La clave del diccionario que se utilizará para buscar al paciente.
+        valor (int): El valor que se utilizará para comparar con la clave y encontrar al paciente.
+        diccionario (dict): El diccionario que contiene a los pacientes.
+
+    Returns:
+        str: Un mensaje indicando si el paciente fue eliminado exitosamente.
+
+    Example:
+        # Ejemplo de uso:
+        pacientes = [{"nombre": "Juan", "edad": 30}, {"nombre": "María", "edad": 25}]
+        eliminar_paciente("nombre", "Juan", pacientes)
+    """
     for paciente in diccionario:
         if paciente[clave] == valor:
             diccionario.remove(paciente)
-            return "Empleado eliminado de forma exitosa"
+            return print("Empleado eliminado de forma exitosa")
 
 
 
