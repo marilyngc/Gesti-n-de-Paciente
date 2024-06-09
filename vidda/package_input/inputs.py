@@ -81,10 +81,3 @@ def validar_grupo_sanguineo(mensaje:str) -> str:
             exit()  # Sale del programa limpiamente
 
 
-def validar_paciente(dato:int,busqueda:str, diccionario:dict):
- 
-    for paciente in diccionario:
-        if paciente[busqueda] == dato:
-            return paciente
-    return None  
-

@@ -1,5 +1,9 @@
 from os import system
-from package_input.pacientes import *
+from package_input.pacientes import opciones, agregar_paciente,menu_modificar_paciente, eliminar_paciente
+from package_input.buscar import buscar_paciente
+from package_input.reportes import mostrar_pacientes, mostrar_paciente_individual
+from package_input.utilidades import menu_promedio
+from package_input.ordenamiento import menu_ordenar_empleados
 
 pacientes = []
 
@@ -10,8 +14,7 @@ def menu_empleados(diccionario:dict):
         
         while bandera_Seguir:
             
-            opcion = int(input("1. Ingresar paciente\n2. Modificar paciente\n3. Eliminar paciente.\n4. Mostrar todos\n 5. Ordenar pacientes\n6. Buscar paciente por DNI \n7. Calcular promedio\n8. salir\n elija una opcion:"))
-
+            opcion = opciones("1. Ingresar paciente\n2. Modificar paciente\n3. Eliminar paciente.\n4. Mostrar todos\n 5. Ordenar pacientes\n6. Buscar paciente por DNI \n7. Calcular promedio\n8. salir\n elija una opcion:")
             
             if opcion in range(2,8) and pacientes_alta is False:
                 print("ERROR: Tiene que ingresar un paciente primero")
@@ -24,12 +27,13 @@ def menu_empleados(diccionario:dict):
                     pacientes_alta = True
 
                 case 2:
-                    id_paciente = buscar_paciente_id(diccionario, "modificar")
-                    modificacion = menu_modificar_empleado(id_paciente)
+                    
+                    id_paciente = buscar_paciente(diccionario, "modificar","id")
+                    modificacion = menu_modificar_paciente(id_paciente)
 
                 case 3:
 
-                    dni_paciente = buscar_paciente_dni(diccionario, "eliminar")
+                    dni_paciente = buscar_paciente(diccionario, "eliminar","dni")
                     empleado_eliminado = eliminar_paciente("dni",dni_paciente, diccionario)
                     print(empleado_eliminado)
 
@@ -40,7 +44,7 @@ def menu_empleados(diccionario:dict):
                     ordenamiento = menu_ordenar_empleados(diccionario)
 
                 case 6:
-                    empleado = dni_paciente(diccionario)
+                    empleado = mostrar_paciente_individual(diccionario, "mostrar","dni")
 
                 case 7:
                     resultado_promedio = menu_promedio(diccionario)
