@@ -1,6 +1,6 @@
 from .inputs import *
 
-contador_id = 1
+
 empleados_maximos = 3
 
 def opciones(mensaje:str):
@@ -8,24 +8,9 @@ def opciones(mensaje:str):
     
     return opcion_valida
 
-def crear_paciente(id:int):
-
-    nombre_validado = validar_caracteres("Ingrese su nombre: ")
-
-    apellido_validado = validar_caracteres("Ingrese su apellido: ")
-    
-    edad_validado = get_int("Ingrese su edad: ", 1, 120, 3)
-    
-    altura_validado = get_int("Ingrese su altura: ", 30, 230, 3)
-
-    peso_validado = get_float("Ingrese su peso: ", 10, 300, 3)
-    
-    dni_validado = get_int("El DNI tiene que ser mayor a 4.000.000: ",4000000, 100000000, 3 )
-        
-    grupo_sanguineo_validado = validar_grupo_sanguineo("Ingrese su tipo sanguineo: ")
-
+def formato_paciente(id,nombre_validado, apellido_validado, edad_validado, altura_validado, peso_validado, dni_validado, grupo_sanguineo_validado) -> dict:
     if None in[nombre_validado, apellido_validado,edad_validado,altura_validado,peso_validado,dni_validado,grupo_sanguineo_validado]:
-         return None
+        return None
         
     else:
         empleado_creado = {"id":id, 
@@ -38,16 +23,47 @@ def crear_paciente(id:int):
                            "grupo sanguineo": grupo_sanguineo_validado
                            }
 
-        return empleado_creado
+    return empleado_creado
     
-def agregar_paciente(empleados):
+def crear_paciente(id:int) -> dict:
+
+    nombre_validado = validar_caracteres("Ingrese su nombre: ")
+
+    apellido_validado = validar_caracteres("Ingrese su apellido: ")
+    
+    edad_validado = get_int("Ingrese su edad: ", 1, 120, 3)
+    
+    altura_validado = get_int("Ingrese su altura: ", 30, 230, 3)
+
+    peso_validado = get_float("Ingrese su peso: ", 10, 300, 3)
+    
+    dni_validado = validar_formato_dni(get_int("El DNI tiene que ser mayor a 4.000.000: ", 4000000, 99999999, 3))
+        
+    grupo_sanguineo_validado = validar_grupo_sanguineo("Ingrese su tipo sanguineo: ")
+    
+    paciente = formato_paciente(id, nombre_validado, apellido_validado, edad_validado, altura_validado, peso_validado, dni_validado, grupo_sanguineo_validado)
+    
+    if paciente:
+        return paciente
+    else:
+        return print("ERROR: no se pudo dar de algo el paciente")
+
+
+    
+def agregar_paciente(empleados, ids_asignados) -> str:
 
     if len(empleados) < empleados_maximos + 1:
-        global contador_id
-        empleado_creado = crear_paciente(contador_id)
+        if ids_asignados:
+            nuevo_id = max(ids_asignados) + 1
+        else:
+            nuevo_id = 1        
         
-        empleados.append(empleado_creado)
-        contador_id += 1
+        empleado_creado = crear_paciente(nuevo_id)
+        
+        if empleado_creado:
+            empleados.append(empleado_creado)
+            ids_asignados.add(nuevo_id)
+        
         return print("Paciente dado de alta con exito")
     else:
         return print("ERROR: no se puede agregar mas de 20 pacientes" )  

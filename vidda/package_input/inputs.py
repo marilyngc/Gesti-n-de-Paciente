@@ -65,13 +65,30 @@ def validar_caracteres(mensaje: str) -> str:
             print("\nPrograma interrumpido por el usuario.")
             exit()  # Sale del programa limpiamente
 
+def validar_formato_dni(dni: int) -> str:
+    """
+    Valida y formatea el DNI para que tenga 8 caracteres, añadiendo ceros a la izquierda si es necesario.
+    
+    Args:
+        dni (int): El número de DNI a validar y formatear.
         
+    Returns:
+        str: El DNI formateado con 8 caracteres.
+    """
+    dni_str = str(dni)
+    if len(dni_str) < 8:
+        dni_str = dni_str.zfill(8)  # Rellena con ceros a la izquierda si es necesario
+    return dni_str
+     
+            
 def validar_grupo_sanguineo(mensaje:str) -> str:
     grupo_validos = ["A+","O+","B+","AB+","A-","O-","B-","AB-"]
     while True:
         try:
             
             grupo_ingresado = input(mensaje)
+            grupo_ingresado = grupo_ingresado.upper()
+            
             if grupo_ingresado in grupo_validos:
                 return grupo_ingresado
             else:

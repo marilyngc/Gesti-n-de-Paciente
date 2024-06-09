@@ -6,8 +6,8 @@ from package_input.utilidades import menu_promedio
 from package_input.ordenamiento import menu_ordenar_empleados
 
 pacientes = []
-
-def menu_empleados(diccionario:dict):
+ids_asignados = {} #set
+def menu_empleados(diccionario:dict, ids_asignados:int):
 
     try:
         bandera_Seguir = True
@@ -23,7 +23,7 @@ def menu_empleados(diccionario:dict):
                 
             match opcion:
                 case 1:
-                    mensaje = agregar_paciente(diccionario)
+                    mensaje = agregar_paciente(diccionario, ids_asignados)
                     pacientes_alta = True
 
                 case 2:
@@ -63,7 +63,7 @@ def menu_empleados(diccionario:dict):
         print("\nPrograma interrumpido por el usuario.")
         exit()  # Sale del programa limpiamente            
                 
-menu_empleados(pacientes)
+menu_empleados(pacientes,ids_asignados)
                 
 system("pause")
 system("cls")               
