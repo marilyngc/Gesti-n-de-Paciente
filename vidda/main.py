@@ -9,7 +9,7 @@ from Package_input.Archivos.parser_csv import *
 path = "vidda\package_input\Archivos\documentos\Empleados.csv"
 
 pacientes = []
-ids_asignados = set() #set
+ids_asignados = set() 
 grupo_compatible = []
 
 resultado_ids = guardar_id(path, ids_asignados)
