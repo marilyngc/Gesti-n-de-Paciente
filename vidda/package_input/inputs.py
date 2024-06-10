@@ -47,7 +47,7 @@ def validar_caracteres(mensaje: str) -> str:
     while True:  # Bucle para solicitar la entrada hasta que sea válida
         try:
             cadena_ingresada = input(mensaje)
-            cadena_ingresada.capitalize()
+            cadena_ingresada = cadena_ingresada.capitalize()
 
             # Validar que la cadena tenga menos de 20 caracteres
             if len(cadena_ingresada) > 20:
