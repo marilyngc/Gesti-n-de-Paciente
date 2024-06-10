@@ -27,35 +27,35 @@ def menu_ordenar_empleados(diccionario:dict):
         menu_ordenar_empleados(diccionario_empleados)
     """
     bandera_seguir = True
-    
+    ultima_lista = []
     while bandera_seguir:
         opcion = opciones("1. ordenar por nombre ascendiente\n2. ordenar por nombre descendiente\n3. ordenar por apellido ascendiente \n4. ordenar por apellido descendiente\n5. ordenar por altura ascendiente\n6. ordenar por altura descendiente\n7. ordenar por grupo sanguineo ascendiente\n8. ordenar por grupo sanguineo descendiente\n9.salir\n elija una opcion:")
         
         match opcion:
             case 1:
-                ordenar_nombres = ordenar_ascendiente(diccionario, "nombre")
-                mostrar_pacientes(ordenar_nombres)
+                ultima_lista = ordenar_ascendiente(diccionario, "nombre")
+                mostrar_pacientes(ultima_lista)
             case 2:
-                ordenar_nombres = ordenar_descendiente(diccionario, "nombre")
-                mostrar_pacientes(ordenar_nombres)
+                ultima_lista = ordenar_descendiente(diccionario, "nombre")
+                mostrar_pacientes(ultima_lista)
             case 3:
-                ordenar_apellido = ordenar_ascendiente(diccionario, "apellido")
-                mostrar_pacientes(ordenar_apellido)
+                ultima_lista = ordenar_ascendiente(diccionario, "apellido")
+                mostrar_pacientes(ultima_lista)
             case 4:
-                ordenar_apellido = ordenar_descendiente(diccionario,"apellido")
-                mostrar_pacientes(ordenar_apellido)
+                ultima_lista = ordenar_descendiente(diccionario,"apellido")
+                mostrar_pacientes(ultima_lista)
             case 5:
-                ordenar_altura = ordenar_ascendiente(diccionario,"altura")
-                mostrar_pacientes(ordenar_altura)
+                ultima_lista = ordenar_ascendiente(diccionario,"altura")
+                mostrar_pacientes(ultima_lista)
             case 6:
-                ordenar_altura = ordenar_descendiente(diccionario,"altura")
-                mostrar_pacientes(ordenar_altura)
+                ultima_lista = ordenar_descendiente(diccionario,"altura")
+                mostrar_pacientes(ultima_lista)
             case 7:
-                ordenar_grupo_sanguineo = ordenar_ascendiente(diccionario,"grupo sanguineo")
-                mostrar_pacientes(ordenar_grupo_sanguineo)
+                ultima_lista = ordenar_ascendiente(diccionario,"grupo sanguineo")
+                mostrar_pacientes(ultima_lista)
             case 8:
-                ordenar_grupo_sanguineo = ordenar_descendiente(diccionario,"grupo sanguineo")
-                mostrar_pacientes(ordenar_grupo_sanguineo)
+                ultima_lista = ordenar_descendiente(diccionario,"grupo sanguineo")
+                mostrar_pacientes(ultima_lista)
 
             case 9:
                 seguir = input("seguro que quieres salir?")
@@ -65,4 +65,7 @@ def menu_ordenar_empleados(diccionario:dict):
                 else:
                     bandera_seguir = True  
             case _:
+  
                 print("ERROR: elija una opcion")
+                
+    return ultima_lista

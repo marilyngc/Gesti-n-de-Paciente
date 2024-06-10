@@ -1,5 +1,6 @@
 from .buscar import buscar_paciente
 
+
 def mostrar_paciente_formateado(paciente):
     """Imprime los datos de un paciente en formato tabular.
 

@@ -1,30 +1,31 @@
 from .inputs import *
 
 
-empleados_maximos = 3
+paciente_maximos = 100
 
 def opciones(mensaje:str):
-    opcion_valida = get_int(mensaje,1, 8, 5)
+    opcion_valida = get_int(mensaje,1, 9, 5)
     
     return opcion_valida
+
 
 def formato_paciente(id,nombre_validado, apellido_validado, edad_validado, altura_validado, peso_validado, dni_validado, grupo_sanguineo_validado) -> dict:
     if None in[nombre_validado, apellido_validado,edad_validado,altura_validado,peso_validado,dni_validado,grupo_sanguineo_validado]:
         return None
         
     else:
-        empleado_creado = {"id":id, 
+        paciente_creado = {"id":id, 
                            "nombre":nombre_validado, 
                            "apellido":apellido_validado, 
-                           "edad": edad_validado,
-                           "altura": altura_validado,
-                           "peso": peso_validado,
-                           "dni":dni_validado,
-                           "grupo sanguineo": grupo_sanguineo_validado
+                           "edad": int(edad_validado),
+                           "altura":int(altura_validado),
+                           "peso": float(peso_validado),
+                           "dni":int(dni_validado),
+                           "grupo sanguineo":grupo_sanguineo_validado
                            }
 
-    return empleado_creado
-    
+    return paciente_creado
+
 def crear_paciente(id:int) -> dict:
 
     nombre_validado = validar_caracteres("Ingrese su nombre: ")
@@ -50,23 +51,23 @@ def crear_paciente(id:int) -> dict:
 
 
     
-def agregar_paciente(empleados, ids_asignados) -> str:
+def agregar_paciente(pacientes:list, ids_asignados):
 
-    if len(empleados) < empleados_maximos + 1:
+    if len(pacientes) < paciente_maximos + 1:
         if ids_asignados:
             nuevo_id = max(ids_asignados) + 1
         else:
             nuevo_id = 1        
         
-        empleado_creado = crear_paciente(nuevo_id)
-        
-        if empleado_creado:
-            empleados.append(empleado_creado)
+        paciente_creado = crear_paciente(nuevo_id)
+        print("pacientes",paciente_creado)
+        if paciente_creado:
+            pacientes.append(paciente_creado)
             ids_asignados.add(nuevo_id)
         
         return print("Paciente dado de alta con exito")
     else:
-        return print("ERROR: no se puede agregar mas de 20 pacientes" )  
+        return print("ERROR: no se puede agregar mas de 50 pacientes" )  
     
     
             
@@ -156,6 +157,9 @@ def eliminar_paciente(clave:str, valor:int,diccionario:dict):
         if paciente[clave] == valor:
             diccionario.remove(paciente)
             return print("Empleado eliminado de forma exitosa")
+            
+            
+    return print("no se eliminó el paciente")
 
 
 
