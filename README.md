@@ -38,8 +38,5 @@ Ejecuta el archivo `main.py` para iniciar el programa:
 python main.py
 ```
 
-## :link: Link al proyecto
-- [Video](https://drive.google.com/drive/folders/16O8w0Nx4NLNYRk5hNqzoo7TLdpmuKVQp?usp=sharing)
 
-    quiero dejar en claro que se ve en el video como se modifica el archivo cvs, empleados agregados y ordenamiento
 
